@@ -1,0 +1,17 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: thinking-in-mybatis
+  datasource:
+    url: jdbc:postgresql://81.70.93.226:5432/postgres
+    username: postgres
+    password: postgres
+    driver-class-name: org.postgresql.Driver
+
+    #druid连接池配置
+    type: com.alibaba.druid.pool.DruidDataSource
+
+mybatis:
+  mapper-locations: com.guyan.think.in
