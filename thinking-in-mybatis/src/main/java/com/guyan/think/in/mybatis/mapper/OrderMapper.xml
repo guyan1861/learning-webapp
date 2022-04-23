@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.guyan.think.in.mybatis.mapper.OrderMapper">
+
+    <!--    <select id="selectOrder" resultType="order" parameterType="integer">-->
+    <!--        select id, order_name orderName, order_numner orderNumber, user_id userId, note-->
+    <!--        from order-->
+    <!--        where id = #{id}-->
+    <!--    </select>-->
+
+    <insert id="putOrders">
+        insert into order (orderName,orderNumber,userId,note)
+        values
+        <foreach collection="orderList" item="item" index="index" separator=",">
+            (#{item.orderName}, #{item.orderNumber}, #{item.userId},#{item.note})
+        </foreach>
+    </insert>
+</mapper>

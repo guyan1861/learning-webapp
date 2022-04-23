@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.guyan.think.in.mybatis.mapper.UserMapper">
+
+    <select id="selectUser" resultType="user" parameterType="integer">
+        select id, username, address
+        from Blog
+        where id = #{id}
+    </select>
+
+    <insert id="putUser" parameterType="user">
+        insert into user (username, address)
+        values (#{username}, #{address})
+    </insert>
+</mapper>
