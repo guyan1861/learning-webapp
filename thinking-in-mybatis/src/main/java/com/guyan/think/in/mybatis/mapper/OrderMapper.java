@@ -7,5 +7,5 @@ import java.util.List;
 
 @Mapper
 public interface OrderMapper {
-    public Integer putOrders(List<Order> orderList);
+    public Integer putOrder(Order order);
 }

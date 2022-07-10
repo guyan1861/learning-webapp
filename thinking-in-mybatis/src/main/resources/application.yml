@@ -53,5 +53,4 @@ spring:
         enabled: true
       use-global-data-source-stat: true
 mybatis:
-  mapper-locations: classpath:mapper/*.xml
   type-aliases-package: com.guyan.think.in.mybatis.pojo

@@ -10,11 +10,9 @@
     <!--        where id = #{id}-->
     <!--    </select>-->
 
-    <insert id="putOrders">
-        insert into order (orderName,orderNumber,userId,note)
+    <insert id="putOrder" parameterType="order">
+        insert into order (order_name)
         values
-        <foreach collection="orderList" item="item" index="index" separator=",">
-            (#{item.orderName}, #{item.orderNumber}, #{item.userId},#{item.note})
-        </foreach>
+            (#{orderName})
     </insert>
 </mapper>

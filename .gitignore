@@ -4,3 +4,8 @@
 *.iml
 *.ipr
 **/target
+**/.idea
+**/.mvn
+**/.mvn
+**/HELP.md
+**/*.iml

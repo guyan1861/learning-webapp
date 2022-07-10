@@ -17,11 +17,11 @@ public class OrderController {
 
     private OrderService orderService;
 
-    @PostMapping("/order/putOrder")
-    public Map<String, String> putOrder(@RequestBody List<Order> orderList) {
+    @PostMapping("/order/putorder")
+    public Map<String, String> putOrder(Order order) {
         Map<String, String> map = new HashMap<>();
-        if (orderList.size() > 0) {
-            Integer orders = orderService.putOrders(orderList);
+        if (order != null) {
+            Integer orders = orderService.putOrder(order);
             map.put("success", "创建订单：" + orders + "个");
         } else {
             map.put("error", "传输的数据有问题，请检查！");

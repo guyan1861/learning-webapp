@@ -14,8 +14,8 @@ public class OrderServiceImpl implements OrderService {
     private OrderMapper orderMapper;
 
     @Override
-    public Integer putOrders(List<Order> orderList) {
-        return orderMapper.putOrders(orderList);
+    public Integer putOrder(Order order) {
+        return orderMapper.putOrder(order);
     }
 
     @Autowired
