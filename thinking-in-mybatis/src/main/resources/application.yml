@@ -54,3 +54,7 @@ spring:
       use-global-data-source-stat: true
 mybatis:
   type-aliases-package: com.guyan.think.in.mybatis.pojo
+
+logging:
+  level:
+    com.guyan.think.in.mybatis.gen: debug

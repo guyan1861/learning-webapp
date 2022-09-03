@@ -7,4 +7,8 @@ import java.util.List;
 
 public interface OrderService {
     public Integer putOrder(Order order);
+
+    public Integer insertSelective(Order order);
+
+    public Order getOrder();
 }

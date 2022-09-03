@@ -5,4 +5,7 @@ import org.springframework.stereotype.Service;
 
 public interface UserService {
     public Integer putUser(User user);
+
+    public User getUser(Integer userId);
+
 }
