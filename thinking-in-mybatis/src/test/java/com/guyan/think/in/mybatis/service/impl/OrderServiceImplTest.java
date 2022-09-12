@@ -18,11 +18,11 @@ class OrderServiceImplTest {
     @Test
     void putOrder() {
         Order order = new Order();
-        order.setOrderName("水果");
+        order.setOrderName("糕点");
         order.setOrderNumber(11);
-        User user = userService.getUser(1);
+        User user = userService.getUser(2);
         order.setUserId(user.getId());
-        order.setNote(user.getUsername() + "在" + user.getAddress() + ",我要多买点！");
+        order.setNote(user.getUsername() + "在" + user.getAddress() + ",太好吃了，人间美味！");
         orderService.putOrder(order);
     }
 
