@@ -1,6 +1,7 @@
 package com.guyan.multiple.datasource;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
@@ -8,6 +9,8 @@ import org.springframework.core.env.Environment;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 
 import javax.sql.DataSource;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * @Author: GuYan
@@ -20,7 +23,6 @@ public class DataSourceConfig {
     @Autowired
     private Environment env;
 
-    @Primary
     @Bean(name = "master")
     public DataSource masterDatasource() {
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
@@ -39,5 +41,17 @@ public class DataSourceConfig {
         dataSource.setUsername(env.getProperty("slave.datasource.username"));
         dataSource.setPassword(env.getProperty("slave.datasource.password"));
         return dataSource;
+    }
+
+    @Bean
+    @Primary
+    public DataSource primaryDataSource(@Qualifier("master") DataSource masterDataSource, @Qualifier("slave") DataSource slaveDataSource) {
+        RoutingDataSource routingDataSource = new RoutingDataSource();
+        Map<Object, Object> map = new HashMap<>();
+        map.put("master", masterDataSource);
+        map.put("slave", slaveDataSource);
+        routingDataSource.setTargetDataSources(map);
+        routingDataSource.setDefaultTargetDataSource(masterDataSource);
+        return routingDataSource;
     }
 }
