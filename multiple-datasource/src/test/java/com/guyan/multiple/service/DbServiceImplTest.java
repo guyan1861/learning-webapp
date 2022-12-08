@@ -22,18 +22,18 @@ class DbServiceImplTest {
     private ManagementCenter managementCenter;
 
     @Test
-    @Transactional
+    //@Transactional
     void insertOne() {
-        String sql = "insert into t1 (id) VALUES (14),(15),(16);";
-        // 使用主库 master
-        dbService.insertOne(managementCenter.getMasterDataSource(), sql);
-
-        sql = "select id from t1 limit 15;";
-        // 使用从库 slave1
-        List<Map<String, Object>> entities = dbService.query(managementCenter.getMasterDataSource(), sql);
-        for (Map item : entities) {
-            System.out.println(item.toString());
-        }
+        //String sql = "insert into t1 (id) VALUES (14),(15),(16);";
+        //// 使用主库 master
+        //dbService.insertOne(managementCenter.getMasterDataSource(), sql);
+        //
+        //sql = "select id from t1 limit 15;";
+        //// 使用从库 slave1
+        //List<Map<String, Object>> entities = dbService.query(managementCenter.getMasterDataSource(), sql);
+        //for (Map item : entities) {
+        //    System.out.println(item.toString());
+        //}
     }
 
     @Test
