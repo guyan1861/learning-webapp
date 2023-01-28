@@ -14,7 +14,7 @@ public class OrderController {
 
     private OrderService orderService;
 
-    @PostMapping("/order/putorder")
+    @PostMapping("/order/putOrder")
     public Map<String, String> putOrder(Order order) {
         Map<String, String> map = new HashMap<>();
         if (order != null) {
