@@ -1,11 +1,6 @@
-### IntelliJ IDEA ###
-.idea
-*.iws
-*.iml
-*.ipr
-**/target
+### 忽略要提交的文件 ###
 **/.idea
-**/.mvn
+**/*.iml
+**/target
 **/.mvn
 **/HELP.md
-**/*.iml
