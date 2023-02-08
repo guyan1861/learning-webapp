@@ -12,9 +12,9 @@ import java.nio.channels.SocketChannel;
  **/
 public class NIOClient {
     public static void main(String[] args) throws IOException {
-        // 得到一个网络通道
+        // 1.得到一个网络通道
         SocketChannel socketChannel = SocketChannel.open();
-        // 设置非阻塞方式
+        // 2.设置非阻塞方式
         socketChannel.configureBlocking(false);
         // 连接服务端
         InetSocketAddress address = new InetSocketAddress("127.0.0.1", 9999);
@@ -23,7 +23,7 @@ public class NIOClient {
             // 连接失败，改用 while 循环重试
             while (!socketChannel.finishConnect()) {
                 // 提现异步做一些事情
-                System.out.println("Client:连接金莲的时候还可以做一些别的事情！！！！！！");
+                System.out.println("Client:连接金莲的时候,还可以做一些别的事情！！！！！！");
             }
         }
 
@@ -33,7 +33,7 @@ public class NIOClient {
         // buffer 中数据写到通道
         socketChannel.write(buffer);
 
-        // 阻塞程序防止中断
+        // 组织客户端终止，否则服务端也会停止
         System.in.read();
 
     }

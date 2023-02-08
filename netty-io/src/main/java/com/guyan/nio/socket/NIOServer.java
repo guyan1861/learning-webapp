@@ -46,13 +46,13 @@ public class NIOServer {
                     System.out.println("OP_ACCEPT");
                     SocketChannel socketChannel = serverSocketChannel.accept();
                     socketChannel.configureBlocking(false);
-                    socketChannel.register(selector, SelectionKey.OP_READ, ByteBuffer.allocate(1024));
+                    socketChannel.register(selector, SelectionKey.OP_READ, ByteBuffer.allocate(25));
                 }
                 if(selectionKey.isReadable()) {
                     SocketChannel channel = (SocketChannel) selectionKey.channel();
                     ByteBuffer byteBuffer = (ByteBuffer) selectionKey.attachment();
                     channel.read(byteBuffer);
-                    System.out.println("客户端发来数据：" + byteBuffer.array());
+                    System.out.println("客户端发来数据：" + new String(byteBuffer.array()));
                 }
                 keyIterator.remove();
             }
