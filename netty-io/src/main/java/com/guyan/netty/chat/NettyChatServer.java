@@ -3,6 +3,7 @@ package com.guyan.netty.chat;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.*;
 import io.netty.channel.nio.NioEventLoopGroup;
+import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
 import io.netty.handler.codec.string.StringDecoder;
 import io.netty.handler.codec.string.StringEncoder;
@@ -30,17 +31,18 @@ public class NettyChatServer {
             b.group(bossGroup,workGroup).channel(NioServerSocketChannel.class)
                     .option(ChannelOption.SO_BACKLOG,128)
                     .childOption(ChannelOption.SO_KEEPALIVE,true)
-                    .childHandler(new ChannelInitializer<ServerChannel>() {
+                    .childHandler(new ChannelInitializer<SocketChannel>() {
                         @Override
-                        protected void initChannel(ServerChannel serverChannel) throws Exception {
-                            ChannelPipeline pipeline = serverChannel.pipeline();
+                        protected void initChannel(SocketChannel socketChannel) throws Exception {
+                            ChannelPipeline pipeline = socketChannel.pipeline();
                             pipeline.addLast(new StringEncoder())
                                     .addLast(new StringDecoder())
                                     .addLast(new NettyChatServerHandler());
                         }
                     });
             System.out.println("网络真人聊天室 Server 启动......");
-            ChannelFuture f = b.bind(port).sync();
+            ChannelFuture cf = b.bind(port).sync();
+            cf.channel().closeFuture().sync();
         } finally {
             bossGroup.shutdownGracefully();
             workGroup.shutdownGracefully();

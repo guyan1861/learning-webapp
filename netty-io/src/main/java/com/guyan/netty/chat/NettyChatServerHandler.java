@@ -36,7 +36,7 @@ public class NettyChatServerHandler extends SimpleChannelInboundHandler<String> 
         System.out.println("s = " + s);
         for (Channel channel : channels) {
             if(channel != inChannel) {
-                channel.writeAndFlush("[" + inChannel.remoteAddress().toString().substring(1) + "] 说" + s + "\n");
+                channel.writeAndFlush("[" + inChannel.remoteAddress().toString().substring(1) + "]：" + s + "\n");
             }
         }
     }
