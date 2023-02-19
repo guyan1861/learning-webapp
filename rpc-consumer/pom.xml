@@ -31,6 +31,12 @@
       <version>0.9.10</version>
     </dependency>
 
+    <dependency>
+      <groupId>com.guyan.rpc</groupId>
+      <artifactId>rpc-producer</artifactId>
+      <version>1.0-SNAPSHOT</version>
+    </dependency>
+
   </dependencies>
 
   <build>

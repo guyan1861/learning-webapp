@@ -17,8 +17,9 @@ public class InvokeHandler extends ChannelInboundHandlerAdapter {
     private String getClassNameImpl(ClassInfo classInfo) throws ClassNotFoundException {
         // 服务方接口和实现类所在的路径
         String interfacePath = "com.guyan.rpc.producer";
+        // 类名字的最后一个点的位置
         int lastDot = classInfo.getClassName().lastIndexOf(".");
-        // 接口名称 其实也是类名称
+        // 接口名称
         String interfaceName = classInfo.getClassName().substring(lastDot);
         // 接口字节码对象
         Class superClass = Class.forName(interfacePath + interfaceName);
