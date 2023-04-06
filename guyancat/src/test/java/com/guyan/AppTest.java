@@ -1,4 +1,4 @@
-package com.guyan.jvm;
+package com.guyan;
 
 import static org.junit.Assert.assertTrue;
 

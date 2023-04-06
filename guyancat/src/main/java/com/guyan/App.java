@@ -1,4 +1,4 @@
-package com.guyan.jvm;
+package com.guyan;
 
 /**
  * Hello world!
